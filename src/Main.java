@@ -10,29 +10,16 @@ public class Main {
         EncryptionStatus e = EncryptionStatus.DECRYPT;
 
         Person[] personen = new Person[5];
-        personen[0] = new Person("Basil", 7, 19, 21);
-        personen[1] = new Person("Philip", 5, 17, 21);
-        personen[2] = new Person("Raphael", 7, 8, 15);
-        personen[3] = new Person("Florian", 5, 11, 14);
-        personen[4] = new Person("Marco", 3, 7, 10);
+        personen[0] = new Person("Person 1", 7, 19, 21);
+        personen[1] = new Person("Person 2", 5, 17, 21);
+        personen[2] = new Person("Person 3", 7, 8, 15);
+        personen[3] = new Person("Person 4", 5, 11, 14);
+        personen[4] = new Person("Person 5", 3, 7, 10);
 
         switch(e){
             case ENCRYPT: System.out.println(coder.encode(personen[0], mtd)); break;
             case DECRYPT: System.out.println(coder.decode(personen[0])); break;
         }
-
-        /*
-        if(code){
-            System.out.println(coder.encode(personen[0], mtd));
-        }else{
-            System.out.println(coder.decode(personen[0]));
-        }
-
-        Person p1 = new Person("Basil", 157, 17, 2773);
-        int rsa = 481;
-        int rsas = (int)RSATools.RSAmtd(p1, rsa, 0);
-        System.out.println(RSATools.RSAmtd(p1, rsa, 0));
-        System.out.println(RSATools.RSAmtd(p1, rsas, 1));*/
 
 
     }
