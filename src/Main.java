@@ -16,9 +16,9 @@ public class Main {
         personen[3] = new Person("Person 4", 5, 11, 14);
         personen[4] = new Person("Person 5", 3, 7, 10);
 
-        switch(status){
-            case ENCRYPT: System.out.println(coder.encode(personen[0], mtd)); break;
-            case DECRYPT: System.out.println(coder.decode(personen[0])); break;
+        switch (status) {
+            case ENCRYPT -> System.out.println(coder.encode(personen[0], mtd));
+            case DECRYPT -> System.out.println(coder.decode(personen[0]));
         }
 
     }
