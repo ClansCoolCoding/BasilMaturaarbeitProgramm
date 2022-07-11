@@ -191,26 +191,6 @@ abstract class Key {
         return result;
     }
 
-    //spezifischen Plan zur Bitverttauschung erstellen
-    protected int[] randomShufflePlan(String[] pakete){
-        int[] plan = new int[pakete[0].length()];
-        for(int i = 0; i < plan.length; i++){
-            plan[i] = i;
-        }
-
-        int deepnes = (int)random(plan.length, plan.length*3);
-        for(int i = 0; i < deepnes; i++){
-            int b = (int)random(0, plan.length);
-            int c = (int)random(0, plan.length);
-
-            int temp = plan[c];
-            plan[c] = plan[b];
-            plan[b] = temp;
-        }
-
-        return plan;
-    }
-
     //nach spezifischem Muster mischen
     protected String[] shuffleWithPlan(String[] pakete, int[] plan, char restriction){
         String[] result = pakete;

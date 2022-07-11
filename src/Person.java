@@ -1,9 +1,9 @@
 public class Person {
 
-    private int publicKey;
-    private int privateKey;
-    private int moduloKey;
-    private String name;
+    private final int publicKey;
+    private final int privateKey;
+    private final int moduloKey;
+    private final String name;
 
     public Person(String name, int publicKey, int privateKey, int moduloKey) {
         this.publicKey = publicKey;
