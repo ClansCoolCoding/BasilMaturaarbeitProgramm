@@ -70,6 +70,12 @@ public class DES {
         int RSAKeiInt = Integer.parseInt(RSAKeyCryptedBin,2);
         int keiInt = Person.RSAmtd(p, RSAKeiInt, EncryptionStatus.DECRYPT);
         String kei = Integer.toBinaryString(keiInt);
+        if(kei.length() < 10){
+            int bmtdlen = kei.length();
+            for(int i = 0; i < 10-bmtdlen; i++){
+                kei += "0";
+            }
+        }
 
         //DES
         //kei muss eine 8-Bit langer String sein
