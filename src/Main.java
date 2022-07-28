@@ -16,8 +16,8 @@ public class Main {
         int mtd = 6;
         boolean DESCodation = true;
         EncryptionStatus status = EncryptionStatus.DECRYPT;
-        int person = 1;
-        Message msg = new Message("Morgen", "001011100010110010110000000111011101011000001111001000010001");
+        int person = 4;
+        Message msg = new Message("Hello There*", "111111100000000010110111101101110111111101001000111001100101001000000000000000110000000001101101011000001011");
         Code coder = new Code(msg);
         DES des = new DES();
 

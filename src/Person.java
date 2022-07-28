@@ -28,13 +28,13 @@ public class Person {
         return name;
     }
 
-    public static int RSAmtd(Person p, int mtd, EncryptionStatus status){
+    public int RSAmtd(int mtd, EncryptionStatus status){
         int e = 0;
         switch(status){
-            case ENCRYPT: e = p.getPublicKey(); break;
-            case DECRYPT: e = p.getPrivateKey(); break;
+            case ENCRYPT: e = this.getPublicKey(); break;
+            case DECRYPT: e = this.getPrivateKey(); break;
         }
-        int m = p.getModuloKey();
+        int m = this.getModuloKey();
 
         int RSAmtd = RSATools.squareAndMultiply(mtd, e, m);
 

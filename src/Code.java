@@ -20,7 +20,7 @@ public class Code {
     public String encode(Person p, int mtd){
         String s = "";
 
-        int RSACryptedMtd = Person.RSAmtd(p, mtd, EncryptionStatus.ENCRYPT);
+        int RSACryptedMtd = p.RSAmtd(mtd, EncryptionStatus.ENCRYPT);
 
         switch (mtd){
             case 1: s = mtdExchange(k1.encode(), RSACryptedMtd);break;
@@ -30,14 +30,7 @@ public class Code {
             case 5: s = mtdExchange(k5.encode(), RSACryptedMtd);break;
             case 6: s = mtdExchange(k6.encode(), RSACryptedMtd);break;
         }
-        /*
-        if(mtd == 1){s = mtdExchange(k1.encode(), RSACryptedMtd);}
-        if(mtd == 2){s = mtdExchange(k2.encode(), RSACryptedMtd);}
-        if(mtd == 3){s = mtdExchange(k3.encode(), RSACryptedMtd);}
-        if(mtd == 4){s = mtdExchange(k4.encode(), RSACryptedMtd);}
-        if(mtd == 5){s = mtdExchange(k5.encode(), RSACryptedMtd);}
-        if(mtd == 6){s = mtdExchange(k6.encode(), RSACryptedMtd);}
-        */
+
         return s;
     }
 
@@ -46,7 +39,7 @@ public class Code {
 
         int method = Integer.parseInt(mtdExchange(msg.getChiffrentext(), 0), 2);
 
-        int RSAmethod = Person.RSAmtd(p, method, EncryptionStatus.DECRYPT);
+        int RSAmethod = p.RSAmtd(method, EncryptionStatus.DECRYPT);
 
         switch(RSAmethod){
             case 1: s = k1.decode();break;
@@ -56,14 +49,7 @@ public class Code {
             case 5: s = k5.decode();break;
             case 6: s = k6.decode();break;
         }
-        /*
-        if(RSAmethod == 1){s = k1.decode();}
-        if(RSAmethod == 2){s = k2.decode();}
-        if(RSAmethod == 3){s = k3.decode();}
-        if(RSAmethod == 4){s = k4.decode();}
-        if(RSAmethod == 5){s = k5.decode();}
-        if(RSAmethod == 6){s = k6.decode();}
-        */
+
         return s;
     }
 

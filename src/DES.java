@@ -4,8 +4,7 @@ public class DES {
 
     public DES(){}
 
-    public String DEScoder(Person p, Message msg, EncryptionStatus encryptionStatus){
-        String result = "";
+    public void DEScoder(Person p, Message msg, EncryptionStatus encryptionStatus){
         switch (encryptionStatus){
             case ENCRYPT -> {
                 encrypt(p, msg);
@@ -14,8 +13,6 @@ public class DES {
                 decrypt(p, msg);
             }
         }
-
-        return result;
     }
 
     //Verschlüssleung
@@ -46,7 +43,7 @@ public class DES {
         }
 
         //RSA
-        int RSACryptedKey = Person.RSAmtd(p, keiInt, EncryptionStatus.ENCRYPT);
+        int RSACryptedKey = p.RSAmtd(keiInt, EncryptionStatus.ENCRYPT);
         String RSACryptedKeyBin = Integer.toBinaryString(RSACryptedKey);
         if(RSACryptedKeyBin.length() < 12){
             int bkeilen = RSACryptedKeyBin.length();
@@ -68,7 +65,7 @@ public class DES {
         String RSAKeyCryptedBin = chiffrentext.substring(chiffrentext.length()-12);
         message.setChiffrentext(chiffrentext.substring(0, chiffrentext.length()-12));
         int RSAKeiInt = Integer.parseInt(RSAKeyCryptedBin,2);
-        int keiInt = Person.RSAmtd(p, RSAKeiInt, EncryptionStatus.DECRYPT);
+        int keiInt = p.RSAmtd(RSAKeiInt, EncryptionStatus.DECRYPT);
         String kei = Integer.toBinaryString(keiInt);
         if(kei.length() < 10){
             int bmtdlen = kei.length();
@@ -366,12 +363,12 @@ public class DES {
 
     //Ablesetabellen
     private final int[][][] S0 = new int[][][]{{{0, 1}, {0, 0}, {1, 1}, {1, 0}}
-            , {{1, 1}, {1, 0}, {0, 1}, {0, 0}}
-            , {{0, 0}, {1, 0}, {0, 1}, {1, 1}}
-            , {{1, 1}, {0, 1}, {1, 1}, {1, 0}}};
+                                             , {{1, 1}, {1, 0}, {0, 1}, {0, 0}}
+                                             , {{0, 0}, {1, 0}, {0, 1}, {1, 1}}
+                                             , {{1, 1}, {0, 1}, {1, 1}, {1, 0}}};
 
     private final int[][][] S1 = new int[][][]{{{0, 0}, {0, 1}, {1, 0}, {1, 1}}
-            , {{1, 0}, {0, 0}, {0, 1}, {1, 1}}
-            , {{1, 1}, {0, 0}, {0, 1}, {0, 0}}
-            , {{1, 0}, {0, 1}, {0, 0}, {1, 1}}};
+                                             , {{1, 0}, {0, 0}, {0, 1}, {1, 1}}
+                                             , {{1, 1}, {0, 0}, {0, 1}, {0, 0}}
+                                             , {{1, 0}, {0, 1}, {0, 0}, {1, 1}}};
 }
