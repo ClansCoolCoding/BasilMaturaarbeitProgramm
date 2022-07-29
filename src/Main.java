@@ -13,40 +13,43 @@ public class Main {
         personen[4] = new Person("Person 5", 113, 425, 2183);
 
         //Die Message wird festgelegt was wie gemacht werden muss
-        boolean DESCodation = false;
+        DESCodation Codation = DESCodation.SIMPLE_DES_CODATION;
         EncryptionStatus status = EncryptionStatus.DECRYPT;
         int person = 4;
-        Message msg = new Message("Hello There*", "000101001100001011101100010111001100111100100000001011001100100001100101011001100110001001101010");
+        Message msg = new Message("", "");
 
 
         //Ver-/Entschlüsselungsorganisation
-        if(DESCodation){
-            DES des = new DES();
-            switch (status){
-                case ENCRYPT -> {
-                    des.DEScoder(personen[person], msg, EncryptionStatus.ENCRYPT);
-                    String outputEncrypt = msg.getChiffrentext();
-                    System.out.println(outputEncrypt);
-                }
-                case DECRYPT -> {
-                    des.DEScoder(personen[person], msg, EncryptionStatus.DECRYPT);
-                    String outputDecrypt = msg.getKlartext();
-                    System.out.println(outputDecrypt);
+        switch (Codation){
+            case SIMPLE_DES_CODATION -> {
+                DES des = new DES();
+                switch (status){
+                    case ENCRYPT -> {
+                        des.DEScoder(personen[person], msg, EncryptionStatus.ENCRYPT);
+                        String outputEncrypt = msg.getChiffrentext();
+                        System.out.println(outputEncrypt);
+                    }
+                    case DECRYPT -> {
+                        des.DEScoder(personen[person], msg, EncryptionStatus.DECRYPT);
+                        String outputDecrypt = msg.getKlartext();
+                        System.out.println(outputDecrypt);
+                    }
                 }
             }
-        }else{
-            int mtd = 6;
-            Code coder = new Code();
-            switch (status) {
-                case ENCRYPT -> {
-                    coder.encode(personen[person], mtd, msg);
-                    String outputEncrypt = msg.getChiffrentext();
-                    System.out.println(outputEncrypt);
-                }
-                case DECRYPT -> {
-                    coder.decode(personen[person], msg);
-                    String outputDecrypt = msg.getKlartext();
-                    System.out.println(outputDecrypt);
+            case OWN_DES_CODATION -> {
+                int mtd = 6;
+                Code coder = new Code();
+                switch (status) {
+                    case ENCRYPT -> {
+                        coder.encode(personen[person], mtd, msg);
+                        String outputEncrypt = msg.getChiffrentext();
+                        System.out.println(outputEncrypt);
+                    }
+                    case DECRYPT -> {
+                        coder.decode(personen[person], msg);
+                        String outputDecrypt = msg.getKlartext();
+                        System.out.println(outputDecrypt);
+                    }
                 }
             }
         }
