@@ -1,17 +1,11 @@
 abstract class Key {
 
-    protected String klartext;
-    protected String chiffrentext;
-
-    public Key(Message msg) {
-        this.klartext = msg.getKlartext();
-        this.chiffrentext = msg.getChiffrentext();
-    }
+    public Key() {}
 
     //Verschlüsseln
-    protected String encode(){
+    protected void encode(Message msg){
         String code = "";
-        char[] characters = split(this.klartext);
+        char[] characters = split(msg.getKlartext());
         int[] asciiCode = ascii(characters);
         String[] binaryNumbers = bin(asciiCode);
         String binaryNumbersComplete = code(binaryNumbers);
@@ -20,13 +14,13 @@ abstract class Key {
 
         code = code(pakete);
 
-        return code;
+        msg.setChiffrentext(code);
     }
 
     //entschlüsseln
-    protected String decode(){
+    protected void decode(Message msg){
         String decoded = "";
-        String chiffrenText = this.chiffrentext;
+        String chiffrenText = msg.getChiffrentext();
 
         String[] pakete = decodeMTD(chiffrenText);
 
@@ -40,7 +34,7 @@ abstract class Key {
         }
 
         int len = decoded.length();
-        return decoded.substring(0, len-1);
+        msg.setKlartext(decoded.substring(0, len-1));
     }
 
     //Verschlüsselungs Methode

@@ -1,8 +1,6 @@
 public class Key5 extends Key{
 
-    public Key5(Message msg) {
-        super(msg);
-    }
+    public Key5(){}
 
     @Override
     protected String[] encodeMTD(String binaryNumbersComplete){

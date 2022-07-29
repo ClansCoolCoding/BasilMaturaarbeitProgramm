@@ -13,10 +13,10 @@ public class Main {
         personen[4] = new Person("Person 5", 113, 425, 2183);
 
         //Die Message wird festgelegt was wie gemacht werden muss
-        boolean DESCodation = true;
+        boolean DESCodation = false;
         EncryptionStatus status = EncryptionStatus.DECRYPT;
         int person = 4;
-        Message msg = new Message("Hello There*", "111111100000000010110111101101110111111101001000111001100101001000000000000000110000000001101101011000001011");
+        Message msg = new Message("Hello There*", "000101001100001011101100010111001100111100100000001011001100100001100101011001100110001001101010");
 
 
         //Ver-/Entschlüsselungsorganisation
@@ -36,10 +36,18 @@ public class Main {
             }
         }else{
             int mtd = 6;
-            Code coder = new Code(msg);
+            Code coder = new Code();
             switch (status) {
-                case ENCRYPT -> System.out.println(coder.encode(personen[person], mtd));
-                case DECRYPT -> System.out.println(coder.decode(personen[person]));
+                case ENCRYPT -> {
+                    coder.encode(personen[person], mtd, msg);
+                    String outputEncrypt = msg.getChiffrentext();
+                    System.out.println(outputEncrypt);
+                }
+                case DECRYPT -> {
+                    coder.decode(personen[person], msg);
+                    String outputDecrypt = msg.getKlartext();
+                    System.out.println(outputDecrypt);
+                }
             }
         }
     }

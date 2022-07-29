@@ -1,7 +1,6 @@
 public class Key1 extends Key{
 
-    public Key1(Message msg) {
-        super(msg);
+    public Key1() {
     }
 
     @Override
