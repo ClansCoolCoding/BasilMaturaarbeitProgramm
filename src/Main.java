@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+import java.util.Scanner;
 
 public class Main {
 
@@ -12,12 +12,16 @@ public class Main {
         personen[3] = new Person("Person 4", 107, 683, 1333);
         personen[4] = new Person("Person 5", 113, 425, 2183);
 
-        //Die Message wird festgelegt was wie gemacht werden muss
-        DESCodation Codation = DESCodation.SIMPLE_DES_CODATION;
-        EncryptionStatus status = EncryptionStatus.DECRYPT;
-        int person = 4;
-        Message msg = new Message("", "");
+        //UserInupt wird genommen
+        UserInput userInput = new UserInput();
+        userInput.initializeMessageCoder();
 
+        //es wird aus userInput ausgelesen
+        DESCodation Codation = userInput.getDESCodation();
+        EncryptionStatus status = userInput.getEncryptionStation();
+        int person = userInput.getPerson();
+        int mtd = userInput.getMtd();
+        Message msg = userInput.getMsg();
 
         //Ver-/Entschlüsselungsorganisation
         switch (Codation){
@@ -37,7 +41,6 @@ public class Main {
                 }
             }
             case OWN_DES_CODATION -> {
-                int mtd = 6;
                 Code coder = new Code();
                 switch (status) {
                     case ENCRYPT -> {
@@ -54,4 +57,6 @@ public class Main {
             }
         }
     }
+
+
 }
