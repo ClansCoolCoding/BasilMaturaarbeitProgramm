@@ -13,7 +13,7 @@ public class UserInput {
     //Nachrichten initialisieren
     public void initializeMessageCoder(){
         //Person
-        System.out.println("An wen ist die Nachricht gerichtet? [0 -4]");
+        System.out.println("An wen ist die Nachricht gerichtet? [0 - 4]");
         person = userInput.nextInt();
 
         //Ver- oder Entschlüsseln
@@ -30,6 +30,8 @@ public class UserInput {
             String input_DC = userInput.next() + userInput.nextLine();
             if(input_DC.toLowerCase().equals("eigen")){
                 dc = DESCodation.OWN_DES_CODATION;
+                System.out.println("Mit welcher Methode soll die Nachricht verschlüsselt werden? [1 - 6]");
+                person = userInput.nextInt();
             }else if(input_DC.toLowerCase().equals("simple")){
                 dc = DESCodation.SIMPLE_DES_CODATION;
             }
