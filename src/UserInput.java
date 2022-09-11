@@ -31,7 +31,7 @@ public class UserInput {
             if(input_DC.toLowerCase().equals("eigen")){
                 dc = DESCodation.OWN_DES_CODATION;
                 System.out.println("Mit welcher Methode soll die Nachricht verschlüsselt werden? [1 - 6]");
-                person = userInput.nextInt();
+                mtd = userInput.nextInt();
             }else if(input_DC.toLowerCase().equals("simple")){
                 dc = DESCodation.SIMPLE_DES_CODATION;
             }
